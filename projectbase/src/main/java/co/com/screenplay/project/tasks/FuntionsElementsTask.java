@@ -13,20 +13,20 @@ import static co.com.screenplay.project.utils.Constants.TIME_SHORT;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isEnabled;
 //8
 
-public class FuntionsElementsTask implements Task {
+public class FuntionsElementsTask implements Task {        // 1 Implementar
     @Override
     @Step("{0} selección la ID card ELEMENTS")
-    public <T extends Actor> void performAs(T actor) {
+    public <T extends Actor> void performAs(T actor) {       // 2 generar el metodo
 
         // Principio  SOLID Responsabilidad Única
 
-        actor.attemptsTo(Scroll.to(ID_CARD_ELEMENTS));                  //El actor hace scroll hasta el elemento.
+        actor.attemptsTo(Scroll.to(ID_CARD_ELEMENTS));                  // 4 El actor hace scroll hasta el elemento.
         actor.attemptsTo(WaitUntil.the(ID_CARD_ELEMENTS, isEnabled())   //Realiza espera del elemento si esta disponible
                         .forNoMoreThan(TIME_SHORT).seconds(),      //Si esta disponible espera el tiempo de la constante
                 Click.on(ID_CARD_ELEMENTS));            //Da clic en el elemento
     }
 
-    public static FuntionsElementsTask choose() {
+    public static FuntionsElementsTask choose() {            // 3 Encapsulamiento
         return Tasks.instrumented(FuntionsElementsTask.class);
     }
 }
